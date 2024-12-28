@@ -1,2 +1,2 @@
 # Abmax
-Abmax is an agent-based modelling framework in Jax, focused on dynamic population size
+Abmax is an agent-based modeling framework in Jax, focused on dynamic population size
