@@ -9,9 +9,18 @@ It provides:
     * Running multiple such simulations in parallel.
 - Implementation of common algorithms used in ABM implemented in Vmap and Jit friendly way.
 
+# Installation
+```bash
+pip install abmax
+```
+Dependencies:
+- Python
+- Jax
+- Flax
+
 # Benchmark
 A comparison of the performance of Abmax with other ABM frameworks: [Agents.jl](https://juliadynamics.github.io/Agents.jl/stable/) and [Mesa](https://mesa.readthedocs.io/en/stable/) based on the [Wolf-Sheep (Grid space) and Bird-Flock (Continuous space) models](https://github.com/JuliaDynamics/ABMFrameworksComparison). These simulations are run for 100 steps and the median time taken for 10 runs is logged. The benchmark is run on a [gcn GPU node](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware)(Intel Xeon Platinum 8360Y + Nvidia A100) of the [Snelius cluster](https://www.surf.nl/en/services/snellius-the-national-supercomputer)
-THe number of initial agents for these simulations are as follows:
+The number of initial agents for these simulations are as follows:
 - Wolf-Sheep small: 1000 sheep, 500 wolves
 - Wolf-Sheep large: 10000 sheep, 5000 wolves
 - Bird-Flock small: 1000 birds
@@ -20,17 +29,23 @@ THe number of initial agents for these simulations are as follows:
 | Model | Abmax | Agents.jl | Mesa |
 | ----- | ----- | --------- | ---- |
 | Wolf-Sheep small | 5X | X~140(ms) | 29X |
-| Wolf-Sheep large | 60X | 60X~6420(ms) | 120X |
+| Wolf-Sheep large | 60X | 60X~6420(ms) | >1hr |
 | Bird-Flock small | 3Y | Y~126(ms) | 126Y |
-| Bird-Flock large | 3Y | 17Y~2179(ms) |  |
+| Bird-Flock large | 3Y | 17Y~2179(ms) | >1hr |
 
-Running simulations in parallel is not supported in Agents.jl and Mesa. The performance of Abmax is expected to be better in such cases. Here is a trend in running different number of wolf-sheep small models in parallel.
+In Abmax, we can run multiple simulations in parallel because of automatic batching and vectorization. 
+Here is a trend in running different number of wolf-sheep small models in parallel.
+
+| Number of models | 10 | 20 | 50 | 100 | 200 | 500 |
+| ----------------- | -- | -- | -- | --- | --- | --- |
+| time taken (s) | 5.75 | 6.81 | 7.324 | 2.5 | 4.5 | 10 |
+
+Note: All the times are reported are exluding the model setup time.
 
 
 # Tutorial
 A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-iron-man/abmax/blob/master/tutorials/getting_started.ipynb)
 
-# Installation
 
 # Citation
 
