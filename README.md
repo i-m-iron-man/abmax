@@ -38,9 +38,9 @@ Here is a trend in running different number of wolf-sheep small models in parall
 
 | Number of models | 10 | 20 | 50 | 100 | 200 | 500 |
 | ----------------- | -- | -- | -- | --- | --- | --- |
-| time taken (s) | 5.75 | 6.81 | 7.324 | 2.5 | 4.5 | 10 |
+| time taken (s) | 5.75 | 6.81 | 7.32 | 8.52 | 8.617 | 14.32 |
 
-Note: All the times are reported are exluding the model setup time.
+Note: All times that are reported, are exluding the model setup time.
 
 
 # Tutorial
