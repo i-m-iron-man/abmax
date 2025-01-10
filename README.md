@@ -14,9 +14,9 @@ It provides:
 pip install abmax
 ```
 Dependencies:
-- Python
-- Jax
-- Flax
+- [Python >= 3.10](https://www.python.org/downloads/)
+- [Jax >= 0.4.13](https://jax.readthedocs.io/en/latest/installation.html)
+- [Flax >= 0.7.4](https://flax.readthedocs.io/en/latest/index.html)
 
 # Benchmark
 A comparison of the performance of Abmax with other ABM frameworks: [Agents.jl](https://juliadynamics.github.io/Agents.jl/stable/) and [Mesa](https://mesa.readthedocs.io/en/stable/) based on the [Wolf-Sheep (Grid space) and Bird-Flock (Continuous space) models](https://github.com/JuliaDynamics/ABMFrameworksComparison). These simulations are run for 100 steps and the median time taken for 10 runs is logged. The benchmark is run on a [gcn GPU node](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware)(Intel Xeon Platinum 8360Y + Nvidia A100) of the [Snelius cluster](https://www.surf.nl/en/services/snellius-the-national-supercomputer)
@@ -48,5 +48,15 @@ A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-
 
 
 # Citation
+If you use Abmax in your research, please cite it as follows:
+```
+@software{abmaxgithub,
+  author = {Siddharth Chaturvedi and Ahmed EL-Gazzar and Marcel van Gerven},
+  title = {{ABMAX}: An agent-based modeling framework in {Jax}},
+  url = {https://github.com/i-m-iron-man/abmax},
+  version = {0.0.1},
+  year = {2025},
+}
+
 
 
