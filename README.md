@@ -1,4 +1,12 @@
-# Abmax
+<div align="center">
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/abmx_logo.png" width="125"/>
+</div>
+<div align="center">
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/flocking.gif" width="250"/>
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/sheep_wolf.gif" width="250"/>
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/small_foragaing.gif" width="250"/>
+</div>
+
 Abmax is an agent-based modeling(ABM) framework in Jax, focused on dynamic population size.
 It provides:
 - Datastructures and functions that can be used to define sets of agents and their manipulations.
