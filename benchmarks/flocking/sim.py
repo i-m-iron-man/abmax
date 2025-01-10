@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../../')
 
 from abmax.structs import *
 from abmax.functions import *
@@ -118,21 +116,21 @@ def run_loop(set, num_steps):
     return agent_pos
 
 
-X_pos_max = 100.0 
-Y_pos_max = 100.0
+X_pos_max = 200.0 
+Y_pos_max = 200.0
 speed = 2.0
 cohere_factor = 0.4
 separate_factor = 0.25
 match_factor = 0.02
-visual_distance = 5.0
+visual_distance = 10.0
 seperation = 4.0
-num_agents = 100
-num_active_agents = 100
+num_agents = 1000
+num_active_agents = 1000
 agent_type = 1
 key = random.PRNGKey(0)
-num_steps = 1000
+num_steps = 100
 
-params_content = {"X_pos_max": jnp.tile(X_pos_max, num_agents),
+params_content_small = {"X_pos_max": jnp.tile(X_pos_max, num_agents),
                     "Y_pos_max": jnp.tile(Y_pos_max, num_agents),
                     "speed": jnp.tile(speed, num_agents),
                     "cohere_factor": jnp.tile(cohere_factor, num_agents),
@@ -140,16 +138,37 @@ params_content = {"X_pos_max": jnp.tile(X_pos_max, num_agents),
                     "match_factor": jnp.tile(match_factor, num_agents),
                     "visual_distance": jnp.tile(visual_distance, num_agents),
                     "seperation": jnp.tile(seperation, num_agents)}
-params = Params(content=params_content)
+params_small = Params(content=params_content_small)
 
-bird_agents = create_agents(Bird, params, num_agents, num_active_agents, agent_type, key)
-bird_set = Set(agents=bird_agents, num_agents=num_agents, num_active_agents=num_active_agents,
+bird_agents_small = create_agents(Bird, params_small, num_agents, num_active_agents, agent_type, key)
+bird_set_small = Set(agents=bird_agents_small, num_agents=num_agents, num_active_agents=num_active_agents,
                id=0, set_type=0, params=None, state=None, policy=None, key=None)
+
+X_pos_max = 500.0 
+Y_pos_max = 500.0
+num_agents = 10000
+num_active_agents = 10000
+visual_distance = 10.0
+
+params_content_large = {"X_pos_max": jnp.tile(X_pos_max, num_agents),
+                    "Y_pos_max": jnp.tile(Y_pos_max, num_agents),
+                    "speed": jnp.tile(speed, num_agents),
+                    "cohere_factor": jnp.tile(cohere_factor, num_agents),
+                    "seperate_factor": jnp.tile(separate_factor, num_agents),
+                    "match_factor": jnp.tile(match_factor, num_agents),
+                    "visual_distance": jnp.tile(visual_distance, num_agents),
+                    "seperation": jnp.tile(seperation, num_agents)}
+params_large = Params(content=params_content_large)
+
+bird_agents_large = create_agents(Bird, params_large, num_agents, num_active_agents, agent_type, key)
+bird_set_large = Set(agents=bird_agents_large, num_agents=num_agents, num_active_agents=num_active_agents,
+               id=0, set_type=0, params=None, state=None, policy=None, key=None)
+
 
 def main(bird_set, num_steps):
     xs,ys = run_loop(bird_set, num_steps)
     return xs,ys
 
 if __name__ == "__main__":
-    xs,ys = main(bird_set, num_steps)
+    xs,ys = main(bird_set_large, num_steps)
     print(xs,ys)
