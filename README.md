@@ -48,7 +48,7 @@ A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-
 
 
 # Citation
-If you use Abmax in your research, please cite it as follows:
+If you use Abmax in your work, please consider citing it as follows:
 ```
 @software{abmaxgithub,
   author = {Siddharth Chaturvedi and Ahmed EL-Gazzar and Marcel van Gerven},
