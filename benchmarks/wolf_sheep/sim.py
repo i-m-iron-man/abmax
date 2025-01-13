@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../../')
-
 from abmax.structs import *
 from abmax.functions import *
 import jax.numpy as jnp
@@ -266,7 +263,7 @@ class Ecosystem():
         
         key, wolf_key, wolf_set_key = jax.random.split(key, 3)
         num_active_wolves = init_wolves
-        num_max_wolves = int(1.5*init_wolves)
+        num_max_wolves = int(1.2*init_wolves)
         wolf_params = Params(content={'reproduction_probab': jnp.tile(wolf_reproduction_probab, num_max_wolves), 
                                       'delta_energy': jnp.tile(wolf_energy, num_max_wolves), 
                                       'x_max': jnp.tile(space_size, num_max_wolves), 
@@ -280,7 +277,7 @@ class Ecosystem():
         
         key, sheep_key, sheep_set_key = jax.random.split(key, 3)
         num_active_sheeps = init_sheeps
-        num_max_sheeps = int(1.5*init_sheeps)
+        num_max_sheeps = int(1.2*init_sheeps)
         sheep_params = Params(content={'reproduction_probab': jnp.tile(sheep_reproduction_probab, num_max_sheeps), 
                                        'delta_energy': jnp.tile(sheep_energy, num_max_sheeps), 
                                        'x_max': jnp.tile(space_size, num_max_sheeps), 
@@ -403,22 +400,24 @@ class Ecosystem():
     
     @staticmethod
     def run_vmap(ecosystems):
+        #print("creating ts")
         ts = jnp.arange(ecosystems.num_step[0])
-        time_begin = time.time()
+        #print("starting sim")
+        #time_begin = time.time()
         ecosystems, num_agents = Ecosystem.run_loop_vmap(ecosystems, ts)
-        time_end = time.time()
-        print("Time taken for 100:", time_end - time_begin)
+        #time_end = time.time()
+        #print("Time taken for 100:", time_end - time_begin)
         return ecosystems, num_agents
 
 
 
-def main(grass_regrowth_time = 30,
+def main(grass_regrowth_time = 40,
          space_size = 1000,
-         wolf_reproduction_probab = 0.4,
-         wolf_energy = 50,
+         wolf_reproduction_probab = 0.5,
+         wolf_energy = 40,
          init_wolves = 5000,
          sheep_reproduction_probab = 0.2,
-         sheep_energy = 5,
+         sheep_energy = 10,
          init_sheeps = 10000,
          sim_steps = 100,
          key = random.PRNGKey(0)):
@@ -431,7 +430,7 @@ def main(grass_regrowth_time = 30,
 
 def main_vmap(grass_regrowth_time = 20,
          space_size = 100,
-         wolf_reproduction_probab = 0.8,
+         wolf_reproduction_probab = 0.2,
 
          wolf_energy = 20,
          init_wolves = 500,
@@ -442,20 +441,67 @@ def main_vmap(grass_regrowth_time = 20,
          sim_steps = 100,
 
          key = random.PRNGKey(0)):
-    key, *ecosystem_keys = random.split(key, 11)
+    key, *ecosystem_keys = random.split(key, 5)
     ecosystem_keys = jnp.array(ecosystem_keys)
     
+    print("creating ecosystems")
     ecosystems = jax.vmap(Ecosystem.create_ecossystem, in_axes=(None, None, None, None, None, None, None, None, None, 0))(grass_regrowth_time, wolf_reproduction_probab, wolf_energy, init_wolves, sheep_reproduction_probab, sheep_energy, init_sheeps, space_size, sim_steps, ecosystem_keys)
-    #ts = jnp.arange(sim_steps)
-    #ecosystems, num_agents = jax.vmap(Ecosystem.run_loop, in_axes=(0, None))(ecosystems, ts)
+
     ecosystems, num_agents = Ecosystem.run_vmap(ecosystems)
 
     return num_agents
+
+
 
 
 if __name__ == "__main__":
     num_agents = main()
     #num_agents = main_vmap()
     print(num_agents)
+
+
+# all ecosystems created after this are used for benchmarking.
+
+grass_regrowth_time = 10
+space_size = 100
+wolf_reproduction_probab = 0.2
+wolf_energy = 40
+init_wolves = 500
+sheep_reproduction_probab = 0.4
+sheep_energy = 10
+init_sheeps = 1000
+sim_steps = 100
+key = random.PRNGKey(0)
     
+ecosystem_small = Ecosystem.create_ecossystem(grass_regrowth_time, wolf_reproduction_probab, wolf_energy, init_wolves, 
+                                        sheep_reproduction_probab, sheep_energy, init_sheeps, space_size, sim_steps, key)
+
+grass_regrowth_time = 40
+space_size = 1000
+wolf_reproduction_probab = 0.2
+wolf_energy = 13
+init_wolves = 5000
+sheep_reproduction_probab = 0.2
+sheep_energy = 5
+init_sheeps = 10000
+sim_steps = 100
+key = random.PRNGKey(0)
+    
+ecosystem_large = Ecosystem.create_ecossystem(grass_regrowth_time, wolf_reproduction_probab, wolf_energy, init_wolves, 
+                                        sheep_reproduction_probab, sheep_energy, init_sheeps, space_size, sim_steps, key)   
         
+
+grass_regrowth_time = 20
+space_size = 100
+wolf_reproduction_probab = 0.2
+wolf_energy = 20
+init_wolves = 500
+sheep_reproduction_probab = 0.4
+sheep_energy = 10
+init_sheeps = 1000
+sim_steps = 100
+
+key = random.PRNGKey(0)
+key, *ecosystem_keys = random.split(key, 501)
+ecosystem_keys = jnp.array(ecosystem_keys)
+ecosystem_vmap = jax.vmap(Ecosystem.create_ecossystem, in_axes=(None, None, None, None, None, None, None, None, None, 0))(grass_regrowth_time, wolf_reproduction_probab, wolf_energy, init_wolves, sheep_reproduction_probab, sheep_energy, init_sheeps, space_size, sim_steps, ecosystem_keys)
