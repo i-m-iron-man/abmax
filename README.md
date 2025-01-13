@@ -27,7 +27,7 @@ Dependencies:
 - [Flax >= 0.7.4](https://flax.readthedocs.io/en/latest/index.html)
 
 # Benchmark
-A comparison of the performance of Abmax with other ABM frameworks: [Agents.jl](https://juliadynamics.github.io/Agents.jl/stable/) and [Mesa](https://mesa.readthedocs.io/en/stable/) based on the [Wolf-Sheep (Grid space) and Bird-Flock (Continuous space) models](https://github.com/JuliaDynamics/ABMFrameworksComparison). These simulations are run for 100 steps and the median time taken for 10 runs is logged. The benchmark is run on a [gcn GPU node](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware)(Intel Xeon Platinum 8360Y + Nvidia A100) of the [Snelius cluster](https://www.surf.nl/en/services/snellius-the-national-supercomputer)
+A comparison of the performance of Abmax with other ABM frameworks: [Agents.jl](https://juliadynamics.github.io/Agents.jl/stable/) and [Mesa](https://mesa.readthedocs.io/en/stable/) based on the [Wolf-Sheep (Grid space) and Bird-Flock (Continuous space) models](https://github.com/i-m-iron-man/ABMFrameworksComparison/tree/main). These simulations are run for 100 steps and the median time taken for 10 runs is logged. The benchmark is run on a [gcn GPU node](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware)(Intel Xeon Platinum 8360Y + Nvidia A100) of the [Snelius cluster](https://www.surf.nl/en/services/snellius-the-national-supercomputer)
 The number of initial agents for these simulations are as follows:
 - Wolf-Sheep small: 1000 sheep, 500 wolves
 - Wolf-Sheep large: 10000 sheep, 5000 wolves
