@@ -9,8 +9,8 @@
 
 Abmax is an agent-based modeling(ABM) framework in Jax, focused on dynamic population size.
 It provides:
-- Datastructures and functions that can be used to define sets of agents and their manipulations.
-    * Adding and removing arbitrary number of agents.
+- Data structures and functions that can be used to define sets of agents and their manipulations.
+    * Adding and removing an arbitrary number of agents.
     * Searching and sorting agents based on their attributes.
     * Updating an arbitrary number of agents to a specific state.
     * Stepping agents in a vectorized way.
@@ -41,14 +41,14 @@ The number of initial agents for these simulations are as follows:
 | Bird-Flock small | 3Y | Y~126(ms) | 126Y |
 | Bird-Flock large | 3Y | 17Y~2179(ms) | >1hr |
 
-In Abmax, we can run multiple simulations in parallel because of automatic batching and vectorization. 
-Here is a trend in running different number of wolf-sheep small models in parallel.
+In Abmax, we can [run multiple simulations](https://github.com/i-m-iron-man/abmax/blob/master/benchmarks/wolf_sheep/benchmarks_vmap.py) in parallel because of automatic batching and vectorization. 
+Here is a trend in running different numbers of wolf-sheep small models in parallel.
 
 | Number of models | 10 | 20 | 50 | 100 | 200 | 500 |
 | ----------------- | -- | -- | -- | --- | --- | --- |
 | time taken (s) | 5.75 | 6.81 | 7.32 | 8.52 | 8.617 | 14.32 |
 
-Note: All times that are reported, are exluding the model setup time.
+Note: All times that are reported, are excluding the model setup time.
 
 
 # Tutorial
