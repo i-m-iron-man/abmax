@@ -1,8 +1,3 @@
-import sys
-
-sys.path.append('/Users/siddarth.chaturvedi/Desktop/source/abmax_git/abmax')
-
-
 from structs import *
 from functions import *
 import jax.numpy as jnp
