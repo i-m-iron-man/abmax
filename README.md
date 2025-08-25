@@ -52,19 +52,19 @@ Note: All times that are reported, are excluding the model setup time.
 
 
 # Tutorial
-A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-iron-man/abmax/blob/master/tutorials/getting_started.ipynb)
+A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-iron-man/abmax/blob/master/tutorials/getting_started.ipynb)[Outdated]
 
 
 # Citation
 If you use Abmax in your work, please consider citing it as follows:
 ```
-@software{abmaxgithub,
-  author = {Siddharth Chaturvedi and Ahmed EL-Gazzar and Marcel van Gerven},
-  title = {{ABMAX}: An agent-based modeling framework in {Jax}},
-  url = {https://github.com/i-m-iron-man/abmax},
-  version = {0.0.1},
-  year = {2025},
+@misc{chaturvedi2025abmax,
+    title={Abmax: A JAX-based Agent-based Modeling Framework},
+    author={Siddharth Chaturvedi and Ahmed El-Gazzar and Marcel van Gerven},
+    year={2025},
+    eprint={2508.16508},
+    archivePrefix={arXiv},
+    primaryClass={cs.MA}
 }
-
 
 
