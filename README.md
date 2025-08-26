@@ -11,7 +11,7 @@ Abmax is a general-purpose agent-based modeling(ABM) framework in Jax
 It provides:
 - Two algorithms to apply unique updates to a dynamic number of agents selected during run-time. Both are JIT friendly and can be vectorized across different number of models
     * Rank-Match (RM)
-    * Sort-Count-Iterate 
+    * Sort-Count-Iterate (SCI)
 - JAX-transformation-friendly data structures and functions that can be used to define sets of agents and their manipulations.
     * Selecting agents based on a run-time determined key.
     * Searching and sorting agents based on their attributes.
