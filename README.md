@@ -50,8 +50,11 @@ Here is a trend in running different numbers of wolf-sheep small models in paral
 Note: All times that are reported, are excluding the model setup time.
 
 
-# Tutorial
-A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-iron-man/abmax/blob/master/tutorials/getting_started.ipynb)[Outdated]
+# Examples
+tutorials in the form of Python notebooks can be found Example section, currently they include:
+- Finance markets
+- Traffic simulation
+- Predation model
 
 
 # Citation
