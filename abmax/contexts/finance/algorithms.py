@@ -2,11 +2,8 @@ import jax
 import jax.numpy as jnp
 from flax import struct
 
-import sys
-sys.path.append('../../')
-
-from structs import *
-from functions import *
+from abmax.structs import *
+from abmax.functions import *
 
 @struct.dataclass
 class Order:
