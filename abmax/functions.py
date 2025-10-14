@@ -303,3 +303,29 @@ def select_sets(select_func:bool, select_params:Params, set:Set)->tuple:
     return selected_indx_len, sort_selected_indx
 
 jit_select_sets = jax.jit(select_sets, static_argnums=(0,))
+
+def add_agents(add_func:callable, add_params:Params, num_agents_add:jnp.int32, set:Set)->Set:
+    """
+    Add agents to the set
+    assumption: add_func is defined in the agent class by the user and returns an object of the agent class
+
+    args:
+        add_func: function to add agents
+        num_agents_add: number of agents to add
+        add_params: parameters to add agents
+        set: Set of agents
+    returns:
+        new set of agents, where the agents are replaced by the new agents
+    """
+    id_last_active = set.num_active_agents
+    max_agents_add = set.num_agents - id_last_active
+    num_agents_add = jnp.minimum(num_agents_add, max_agents_add)
+
+    def add_data(idx, agents):
+        new_agent = jax.jit(add_func)(agents, idx, add_params)
+        new_agents = jax.tree_util.tree_map(lambda x,y:x.at[idx].set(y), agents, new_agent)
+        return new_agents
+    
+    new_agents = jax.lax.fori_loop(id_last_active, id_last_active+num_agents_add, add_data, set.agents)
+    return set.replace(agents=new_agents, num_active_agents = set.num_active_agents + num_agents_add)
+jit_add_agents = jax.jit(add_agents, static_argnums=(0,))
