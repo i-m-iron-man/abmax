@@ -51,7 +51,7 @@ Note: All times that are reported, are excluding the model setup time.
 
 
 # Examples
-tutorials in the form of Python notebooks can be found Example section, currently they include:
+tutorials in the form of Python notebooks can be found in the Example section, currently they include:
 - Finance markets
 - Traffic simulation
 - Predation model
