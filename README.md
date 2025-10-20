@@ -20,6 +20,9 @@ It provides:
     * Running multiple such simulations in parallel.
 - Implementation of common algorithms used in ABM implemented in vmap and jit friendly way.
 
+# Paper
+Preprint available [here](https://doi.org/10.48550/arXiv.2508.16508)
+
 # Installation
 ```bash
 pip install abmax
