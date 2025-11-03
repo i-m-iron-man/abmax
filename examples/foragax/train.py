@@ -1,16 +1,16 @@
-import sys
-sys.path.append('../../abmax/contexts/foraging/')
+#import sys
+#sys.path.append('../../abmax/contexts/foraging/')
 
 #import ray_sensing
 #import jax.numpy as jnp
-#ray_sensing.RAY_RESOLUTION = #change as needed
+#ray_sensing.RAY_RESOLUTION = 12 #change as needed
 #ray_sensing.RAY_SPAN = jnp.pi/3 # can be overridden in the local context
 #ray_sensing.RAY_MAX_LENGTH = 120.0 # can be overridden in the local context
 
 from abmax.structs import *
 from abmax.functions import *
-from algorithms import *
-from ray_sensing import RAY_RESOLUTION
+from abmax.contexts.foraging.algorithms import *
+from abmax.contexts.foraging.ray_sensing import RAY_RESOLUTION
 
 import jax.numpy as jnp
 import jax.random as random
