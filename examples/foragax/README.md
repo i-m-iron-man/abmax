@@ -1,6 +1,6 @@
 # Foragax
 <div align="center">
-    <img src="" width="250"/>
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/examples/foragax/media/large_forage.gif" width="250"/>
 </div>
 
 Foragax is an extenstion of ABMax into the domain of many-agent foraging problems by considering foragers as circular active particles. It implements 3 types of entities:
