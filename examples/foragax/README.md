@@ -1,4 +1,4 @@
-# Foragax
+# Foragax: Many-Agent Foraging Simulation with ABMax
 <div align="center">
     <img src="https://github.com/i-m-iron-man/abmax/blob/master/examples/foragax/media/large_forage.gif" width="500"/>
 </div>
