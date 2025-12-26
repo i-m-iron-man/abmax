@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/abmx_logo.png" width="250"/>
+    <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/ABMax_logo.png" width="250"/>
 </div>
 <div align="center">
     <img src="https://github.com/i-m-iron-man/abmax/blob/master/media/flocking.gif" width="250"/>
