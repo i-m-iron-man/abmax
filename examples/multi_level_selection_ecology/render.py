@@ -83,7 +83,7 @@ def render_trajectory(render_data, filename):
 
 if __name__ == "__main__":
     mode = 'mean'  # 'mean' or 'best'
-    seed = '7_final' # '7', '11', '5'
+    seed = '7' # '7', '11', '5'
     boid_xs = jnp.load("./test_data/trajectories/seed_"+seed+"/"+mode+"/rendering_boids_xs.npy")
     boid_ys = jnp.load("./test_data/trajectories/seed_"+seed+"/"+mode+"/rendering_boids_ys.npy")
     boid_angs = jnp.load("./test_data/trajectories/seed_"+seed+"/"+mode+"/rendering_boids_angs.npy")

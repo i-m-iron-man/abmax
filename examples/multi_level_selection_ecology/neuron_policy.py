@@ -50,7 +50,6 @@ class CTRNN(Policy):
         
         # compute the neuron updates
         z_dot = jnp.matmul(J, jax.nn.sigmoid(Z+B)) + jnp.matmul(E, obs) - Z
-        #z_dot = jnp.tanh(jnp.matmul(J, Z) + jnp.matmul(E, obs) + B) - Z
         z_dot = jnp.multiply(z_dot, time_constant_scale*jax.nn.sigmoid(tau))
 
         new_Z = Z + dt*z_dot

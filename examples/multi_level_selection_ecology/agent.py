@@ -1,10 +1,3 @@
-'''
-In interest of time:
-we are not adding the idea of cool down period for child, for interaction.
-as that will have a massive refactoring effect on the code, and we want to first see the results without it. We can add it later if needed.
-'''
-
-
 from abmax.structs import *
 from abmax.functions import *
 import jax.numpy as jnp
@@ -23,12 +16,6 @@ class Boid(Agent):
     def create_agent(type, params, id, active_state, key):
 
         policy = params.content['policy']
-        # intialization
-        #key, *subkeys = random.split(key, 5)
-        #energy = jax.lax.cond(active_state, lambda _: random.uniform(subkeys[3], shape=(1,), minval=0.2*MAX_ENERGY, maxval=0.5*MAX_ENERGY), lambda _: jnp.zeros((1,), dtype=jnp.float32), None) # if active, initialize with random energy, else initialize with 0 energy 
-
-        #x = jax.lax.cond(active_state, lambda _: random.uniform(subkeys[0], shape=(1,), minval=-MAX_SPAWN_X, maxval=MAX_SPAWN_X), lambda _: jnp.array([MAX_WORLD_X + 2*RAY_LENGTH]), None) # if active, spawn randomly, else spawn at MAX_WORLD_X + 2*RAY_LENGTH to avoid spawning in the world
-        #y = jax.lax.cond(active_state, lambda _: random.uniform(subkeys[1], shape=(1,), minval=-MAX_SPAWN_Y, maxval=MAX_SPAWN_Y), lambda _: jnp.array([MAX_WORLD_Y + 2*RAY_LENGTH]), None) # if active, spawn randomly, else spawn at MAX_WORLD_Y + 2*RAY_LENGTH to avoid spawning in the world
 
         state_content = { "x": jnp.zeros((1,), dtype=jnp.float32), #x,
                           "y": jnp.zeros((1,), dtype=jnp.float32), #y,
@@ -153,11 +140,8 @@ class Boid(Agent):
 
         energy =             agent.state.content['energy']
         bar_energy =         agent.state.content['bar_energy']
-        #grazing_energy =     agent.state.content['grazing_energy'] calculated now
         bar_grazing_energy = agent.state.content['bar_grazing_energy']
-        #exchange_energy =    agent.state.content['exchange_energy'], input from env
         bar_exchange_energy =agent.state.content['bar_exchange_energy']
-        #metabolic_cost =     agent.state.content['metabolic_cost']
         bar_metabolic_cost = agent.state.content['bar_metabolic_cost']
         bar_energy_taken =    agent.state.content['bar_energy_taken']
 
