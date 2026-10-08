@@ -453,7 +453,7 @@ def main_vmap():
     ax.set_xlabel('time steps', fontsize=50)
     ax.set_ylabel('number of wolves', fontsize=50)
     ax.tick_params(axis='both', which='major', labelsize=25)
-    ax.legend(fontsize=25)
+    #ax.legend(fontsize=25)
     plt.savefig('./wolf_dynamics.svg', bbox_inches='tight')
     plt.show()
 
@@ -463,7 +463,7 @@ def main_vmap():
     ax.set_xlabel('time steps', fontsize=50)
     ax.set_ylabel('number of sheep', fontsize=50)
     ax.tick_params(axis='both', which='major', labelsize=25)
-    ax.legend(fontsize=25)
+    #ax.legend(fontsize=25)
     plt.savefig('./sheep_dynamics.svg', bbox_inches='tight')
     plt.show()
 

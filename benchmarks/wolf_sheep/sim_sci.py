@@ -431,7 +431,7 @@ def main_vmap():
     plt.xlabel('Time Steps')
     plt.ylabel('Number of Agents')
     plt.title('Population Dynamics of Wolves and Sheep (Multiple Ecosystems)')
-    plt.legend()
+    #plt.legend()
     plt.show()
 
 if __name__ == "__main__":
