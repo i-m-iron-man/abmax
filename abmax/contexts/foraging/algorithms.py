@@ -4,7 +4,7 @@ from flax import struct
 
 from abmax.structs import *
 from abmax.functions import *
-from ray_sensing import *
+from abmax.contexts.foraging.ray_sensing import *
 
 @struct.dataclass
 class Patch:

@@ -20,6 +20,9 @@ It provides:
     * Running multiple such simulations in parallel.
 - Implementation of common algorithms used in ABM implemented in vmap and jit friendly way.
 
+# Paper
+Preprint available [here](https://doi.org/10.48550/arXiv.2508.16508)
+
 # Installation
 ```bash
 pip install abmax
@@ -40,7 +43,7 @@ The number of initial agents for these simulations are as follows:
 | Wolf-Sheep small | 14.93 | 50.26 | 726.78 | 1333.047
 | Wolf-Sheep large | 685.03 | 3315.88 | 5455.01 | 170070.95
 
-In Abmax, we can [run multiple simulations](https://github.com/i-m-iron-man/abmax/blob/master/benchmarks/wolf_sheep/benchmarks_vmap.py) in parallel because of automatic batching and vectorization. 
+In Abmax, we can run multiple simulations in parallel because of automatic batching and vectorization. 
 Here is a trend in running different numbers of wolf-sheep small models in parallel.
 
 | Number of models | 10 | 20 | 50 | 100 | 200 | 500 |
@@ -50,8 +53,11 @@ Here is a trend in running different numbers of wolf-sheep small models in paral
 Note: All times that are reported, are excluding the model setup time.
 
 
-# Tutorial
-A basic tutorial on how to use Abmax is available [here](https://github.com/i-m-iron-man/abmax/blob/master/tutorials/getting_started.ipynb)[Outdated]
+# Examples
+tutorials in the form of Python notebooks can be found in the Example section, currently they include:
+- Finance markets
+- Traffic simulation
+- Predation model
 
 
 # Citation
