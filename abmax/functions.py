@@ -209,6 +209,32 @@ def set_agents_sci(set_func:callable, set_params:Params, num_agents_set:jnp.int3
     return set.replace(agents=new_agents)
 jit_set_agents_sci = jax.jit(set_agents_sci, static_argnums=(0,))
 
+def set_agents_pair(set_func:callable, set_params:Params, set:Set)->Set:
+    """
+    If a child is updated using itself then just return the child, else update the child using the source agent
+    assumption: set_func is defined in the agent class by the user and returns an object of the agent class similar to sci
+
+    args:
+        set_func_source: function to set source agents
+        set_params: parameters to set agents, SHOULD HAVE 'set_indx' keys in the content which
+        contains the ids of the source
+    """
+    source_indx = set_params.content['set_indx'].reshape(-1)
+    agents = set.agents
+    def set_agent(agent, source_indx_el):
+        def diff_parent():
+            return jax.jit(set_func)(agent, source_indx_el, set_params)
+        def same_parent():
+            return agent
+        #if agent.id == source_indx_el - > set source agent, if agent.id == destination_indx_el -> set destination agent, else return agent
+        return jax.lax.cond(agent.id != source_indx_el, lambda _: diff_parent(), lambda _: same_parent(), None)
+        
+    new_agents = jax.vmap(set_agent)(agents, source_indx)
+    return set.replace(agents=new_agents)
+
+jit_set_agents_pair = jax.jit(set_agents_pair, static_argnums=(0,))
+
+
 
 def sort_agents(quantity:jnp.array, agents:Agent)->Agent:
     """
